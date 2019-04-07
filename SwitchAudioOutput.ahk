@@ -1,3 +1,7 @@
+#SingleInstance, Force
+
+#F12::SwitchOutput()
+
 SwitchOutput()
 {
 	; http://www.daveamenta.com/2011-05/programmatically-or-command-line-change-the-default-sound-playback-device-in-windows-7/
@@ -46,13 +50,12 @@ For DeviceName, DeviceID in Devices
     List .= "(" . A_Index . ") " . DeviceName . "`n", ObjRawSet(Devices2, A_Index, DeviceID)
 InputBox n,, % List,,,,,,,, 1
 
-MsgBox % Devices2[n]
+;MsgBox % Devices2[n]
 
 ;IPolicyConfig::SetDefaultEndpoint
 IPolicyConfig := ComObjCreate("{870af99c-171d-4f9e-af0d-e63df40c2bc9}", "{F8679F50-850A-41CF-9C72-430F290290C8}") ;00000102-0000-0000-C000-000000000046 00000000-0000-0000-C000-000000000046
 R := DllCall(NumGet(NumGet(IPolicyConfig+0)+13*A_PtrSize), "UPtr", IPolicyConfig, "Str", Devices2[n], "UInt", 0, "UInt")
 ObjRelease(IPolicyConfig)
-MsgBox % Format("0x{:08X}", R)	
+;MsgBox % Format("0x{:08X}", R)	
 }
 
-LWin & F12::SwitchOutput()

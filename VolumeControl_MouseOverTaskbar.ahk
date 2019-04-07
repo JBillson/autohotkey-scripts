@@ -1,8 +1,10 @@
-﻿#If MouseIsOver("ahk_class Shell_TrayWnd")
+﻿#SingleInstance, Force
+
+
+#If MouseIsOver("ahk_class Shell_TrayWnd")
    WheelUp::Send {Volume_Up}
    WheelDown::Send {Volume_Down}
-   ;WheelClick::Send {Volume_Mute}
-   ;WheelUp::run nircmd changeappvolume focused +0.1
+   MButton::Send {Volume_Mute}   
 #If
 
 MouseIsOver(WinTitle)

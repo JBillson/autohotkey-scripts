@@ -1,8 +1,11 @@
 ;TOGGLE WINDOW TRANSPARENT ALWAYS ON TOP 
+;Win + `
+
+#SingleInstance, Force
 
 transparency = 150
 
-LWin & `::
+#`::
 WinGet, currentTransparency, Transparent, A
 if (currentTransparency = transparency)
 {
@@ -12,6 +15,6 @@ if (currentTransparency = transparency)
 else
 {
     WinSet, Transparent, %transparency%, A
-    WinSet, Alwaysontop, Toggle, A
+    WinSet, Alwaysontop, Toggle, A    	
 }
 return
