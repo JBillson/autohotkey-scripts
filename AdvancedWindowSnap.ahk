@@ -25,6 +25,41 @@
 #SingleInstance force
 #MaxThreads 1
 
+;					CONTROLS
+;--------------------------------------------------
+
+; Win + Numberpad Hotkeys (Half)
+;-------------------------------
+#Numpad1::SnapActiveWindow("bottom","left","half")
+#Numpad2::SnapActiveWindow("bottom","full","half")
+#Numpad3::SnapActiveWindow("bottom","right","half")
+#Numpad4::SnapActiveWindow("top","left","full")
+
+#Numpad5::
+	WinGet, MX, MinMax, A
+	if MX
+	WinRestore A
+	Else WinMaximize A
+	return
+
+#Numpad6::SnapActiveWindow("top","right","full")
+#Numpad7::SnapActiveWindow("top","left","half")
+#Numpad8::SnapActiveWindow("top","full","half")
+#Numpad9::SnapActiveWindow("top","right","half")
+
+
+; Ctrl + Win + Numberpad Hotkeys (Third)
+;---------------------------------------
+^#Numpad8::SnapActiveWindow("top","full","third")
+^#Numpad5::SnapActiveWindow("middle","full","third")
+^#Numpad2::SnapActiveWindow("bottom","full","third")
+^#Numpad7::SnapActiveWindow("top","left","third")
+^#Numpad4::SnapActiveWindow("middle","left","third")
+^#Numpad1::SnapActiveWindow("bottom","left","third")
+^#Numpad9::SnapActiveWindow("top","right","third")
+^#Numpad6::SnapActiveWindow("middle","right","third")
+^#Numpad3::SnapActiveWindow("bottom","right","third")
+
 
 SnapActiveWindow(winPlaceVertical, winPlaceHorizontal, winSizeHeight, activeMon := 0) 
 {
@@ -135,6 +170,7 @@ GetMonitorIndexFromWindow(windowHandle) {
     return %monitorIndex%
 }
 
+/*
 dynamicPickup(initial:=0) {
 	; Pickup the initial keypress
 	pressed%initial% := true
@@ -220,6 +256,7 @@ dynamicPickup(initial:=0) {
 	loop 9
 		Hotkey, ^#Numpad%A_Index%, dynamicPickup, On
 }
+*/
 
 SnapActiveWindowAdvanced(anchor, widthUnit, heightUnit, snapGrid := 3,activeMon := 0) {
 	; SnapGrid units are the width/height of the active monitor evenly split into the snapgrid number
@@ -306,6 +343,7 @@ SnapActiveWindowAdvanced(anchor, widthUnit, heightUnit, snapGrid := 3,activeMon 
 	}
 }
 
+/*
 ; Dynamic Snapping
 loop 9
 	Hotkey, ^#Numpad%A_Index%, dynamicPickup, On
@@ -315,40 +353,15 @@ return
 dynamicPickup:
 	dynamicPickup(SubStr(A_ThisHotkey,0))
 return
-
-; Directional Arrow Hotkeys
-#!Up::SnapActiveWindow("top","full","half")
-#!Down::SnapActiveWindow("bottom","full","half")
-
-; Numberpad Hotkeys (Landscape)
-#Numpad1::SnapActiveWindow("bottom","left","half")
-#Numpad2::SnapActiveWindow("bottom","full","half")
-#Numpad3::SnapActiveWindow("bottom","right","half")
-#Numpad4::SnapActiveWindow("top","left","full")
-
-#Numpad5::
-	WinGet, MX, MinMax, A
-	if MX
-	WinRestore A
-	Else WinMaximize A
-	return
-
-#Numpad6::SnapActiveWindow("top","right","full")
-#Numpad7::SnapActiveWindow("top","left","half")
-#Numpad8::SnapActiveWindow("top","full","half")
-#Numpad9::SnapActiveWindow("top","right","half")
-
+*/
 
 
 /*
-; Numberpad Hotkeys (Portrait)
-^#!Numpad8::SnapActiveWindow("top","full","third")
-^#!Numpad5::SnapActiveWindow("middle","full","third")
-^#!Numpad2::SnapActiveWindow("bottom","full","third")
-^#!Numpad7::SnapActiveWindow("top","left","third")
-^#!Numpad4::SnapActiveWindow("middle","left","third")
-^#!Numpad1::SnapActiveWindow("bottom","left","third")
-^#!Numpad9::SnapActiveWindow("top","right","third")
-^#!Numpad6::SnapActiveWindow("middle","right","third")
-^#!Numpad3::SnapActiveWindow("bottom","right","third")
+; Directional Arrow Hotkeys
+#!Up::SnapActiveWindow("top","full","half")
+#!Down::SnapActiveWindow("bottom","full","half")
 */
+
+
+
+
