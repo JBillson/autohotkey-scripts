@@ -22,12 +22,12 @@
  */
 
 #NoEnv
-#NoTrayIcon
 #SingleInstance force
 #MaxThreads 1
 
 
-SnapActiveWindow(winPlaceVertical, winPlaceHorizontal, winSizeHeight, activeMon := 0) {
+SnapActiveWindow(winPlaceVertical, winPlaceHorizontal, winSizeHeight, activeMon := 0) 
+{
     WinGet activeWin, ID, A
 	SysGet, MonitorCount, MonitorCount
 	
@@ -321,15 +321,26 @@ return
 #!Down::SnapActiveWindow("bottom","full","half")
 
 ; Numberpad Hotkeys (Landscape)
-#!Numpad7::SnapActiveWindow("top","left","half")
-#!Numpad8::SnapActiveWindow("top","full","half")
-#!Numpad9::SnapActiveWindow("top","right","half")
-#!Numpad1::SnapActiveWindow("bottom","left","half")
-#!Numpad2::SnapActiveWindow("bottom","full","half")
-#!Numpad3::SnapActiveWindow("bottom","right","half")
-#!Numpad4::SnapActiveWindow("top","left","full")
-#!Numpad6::SnapActiveWindow("top","right","full")
+#Numpad1::SnapActiveWindow("bottom","left","half")
+#Numpad2::SnapActiveWindow("bottom","full","half")
+#Numpad3::SnapActiveWindow("bottom","right","half")
+#Numpad4::SnapActiveWindow("top","left","full")
 
+#Numpad5::
+	WinGet, MX, MinMax, A
+	if MX
+	WinRestore A
+	Else WinMaximize A
+	return
+
+#Numpad6::SnapActiveWindow("top","right","full")
+#Numpad7::SnapActiveWindow("top","left","half")
+#Numpad8::SnapActiveWindow("top","full","half")
+#Numpad9::SnapActiveWindow("top","right","half")
+
+
+
+/*
 ; Numberpad Hotkeys (Portrait)
 ^#!Numpad8::SnapActiveWindow("top","full","third")
 ^#!Numpad5::SnapActiveWindow("middle","full","third")
@@ -340,4 +351,4 @@ return
 ^#!Numpad9::SnapActiveWindow("top","right","third")
 ^#!Numpad6::SnapActiveWindow("middle","right","third")
 ^#!Numpad3::SnapActiveWindow("bottom","right","third")
-
+*/
