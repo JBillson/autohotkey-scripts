@@ -1,0 +1,6 @@
+AHK Modifiers:
+
+! = ALT
+^ = CTRL
++ = SHIFT
+# = WIN

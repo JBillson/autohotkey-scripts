@@ -1,10 +1,5 @@
 #SingleInstance, Force
 
-; ! = ALT
-; ^ = CTRL
-; + = SHIFT
-; # = WIN
-
 #F12::SwitchOutput()
 
 SwitchOutput()
