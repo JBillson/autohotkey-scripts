@@ -1,10 +1,15 @@
 #SingleInstance, Force
 
+; ! = ALT
+; ^ = CTRL
+; + = SHIFT
+; # = WIN
+
 #F12::SwitchOutput()
 
 SwitchOutput()
 {
-	; http://www.daveamenta.com/2011-05/programmatically-or-command-line-change-the-default-sound-playback-device-in-windows-7/
+; http://www.daveamenta.com/2011-05/programmatically-or-command-line-change-the-default-sound-playback-device-in-windows-7/
 Devices := {}
 IMMDeviceEnumerator := ComObjCreate("{BCDE0395-E52F-467C-8E3D-C4579291692E}", "{A95664D2-9614-4F35-A746-DE8DB63617E6}")
 
