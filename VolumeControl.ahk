@@ -28,9 +28,9 @@ gAmount = 5 ;amount to increment global volume
 
 
 ;TOGGLE VOLUME MIXER
-;Win + v
+;Ctrl + Win + v
 
-#v::	
+^#v::	
 	IfWinExist, ahk_exe SndVol.exe
     	WinClose ; use the window found above		
 	else
