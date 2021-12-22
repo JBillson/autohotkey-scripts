@@ -1,3 +1,6 @@
+; KEY REMAP
+; ---------
+
 #SingleInstance, Force
 
 LAlt::RWin
