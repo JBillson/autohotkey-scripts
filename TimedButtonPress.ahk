@@ -17,9 +17,7 @@ running := False
 toggleAutomaticButtonPress() {
     running := !running
     while (running) {
-        Send, {
-            RETURN
-        } 
+        Send, {RETURN} 
         sleep, 1000
     }
     return

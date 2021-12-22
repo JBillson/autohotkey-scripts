@@ -37,7 +37,5 @@ toggleFileExtensions() {
 
 refreshExplorer()
 {
-    send, {
-        F5
-    }
+    send, {F5}
 }

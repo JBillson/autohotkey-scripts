@@ -16,8 +16,6 @@
 #9::switchDesktopByNumber(9)
 ^#n::switchDesktopByNumber(CurrentDesktop + 1) ; Ctrl + Win + n
 ^#p::switchDesktopByNumber(CurrentDesktop - 1) ; Ctrl + Win + p
-
-
 ; GLOBALS
 ; -------
 DesktopCount = 9 ; Windows starts with 2 desktops at boot
@@ -34,24 +32,13 @@ mapDesktopsFromRegistry() {
     IdLength := 32
     SessionId := getSessionId()
     if (SessionId) {
-        RegRead, CurrentDesktopId, HKEY_CURRENT_USER\
-        SOFTWARE\
-        Microsoft\
-        Windows\
-        CurrentVersion\
-        Explorer\
-        VirtualDesktops, CurrentVirtualDesktop
+        RegRead, CurrentDesktopId, HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops, CurrentVirtualDesktop
         if (CurrentDesktopId) {
             IdLength := StrLen(CurrentDesktopId)
         }
     }
     ; Get a list of the UUIDs for all virtual desktops on the system
-    RegRead, DesktopList, HKEY_CURRENT_USER, SOFTWARE\
-    Microsoft\
-    Windows\
-    CurrentVersion\
-    Explorer\
-    VirtualDesktops, VirtualDesktopIDs
+    RegRead, DesktopList, HKEY_CURRENT_USER, "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops", VirtualDesktopIDs
     if (DesktopList) {
         DesktopListLength := StrLen(DesktopList)
         ; Figure out how many virtual desktops there are
@@ -90,8 +77,7 @@ getSessionId()
         OutputDebug, Error getting session id: %ErrorLevel%
             return
     }
-    OutputDebug,
-    Current Session Id: %SessionId%
+    OutputDebug,Current Session Id: %SessionId%
         return SessionId
 }
 ;

@@ -7,7 +7,6 @@
 ; -------
 ^#v::toggleMixer() ; Ctrl + Win + v
 ^#F12::switchOutput() ; Ctrl + Win + F12
-
 ; METHODS
 ; -------
 toggleMixer() {
@@ -22,13 +21,7 @@ toggleMixer() {
         WinMove, ahk_exe SndVol.exe, , 10, 10, 1000 ; move window to top left of screen
         WinSet, Transparent, 150, A ; make window transparent
         WinSet, Alwaysontop, On, A ; make window always on top
-        Send, {
-            ALT DOWN
-        } {
-            TAB
-        } {
-            ALT UP
-        } ; focus on window that you were on
+        Send, {ALT DOWN} {TAB} {ALT UP} ; focus on window that you were on
         Return
     }
 }
