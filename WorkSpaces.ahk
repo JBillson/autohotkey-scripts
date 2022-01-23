@@ -101,12 +101,27 @@ switchDesktopByNumber(targetDesktop)
  CurrentDesktop++
  OutputDebug, [right] target: %targetDesktop% current: %CurrentDesktop%
  }
+
+ ; Display notification
+ ToolTip, %CurrentDesktop%, , , 
+ SetTimer, removeTooltip, -1000
+
  ; Go left until we reach the desktop we want
  while(CurrentDesktop > targetDesktop) {
  Send ^#{Left}
  CurrentDesktop--
  OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
  }
+
+ ; Display tooltip 
+ ToolTip, %CurrentDesktop%, , , 
+ SetTimer, removeTooltip, -1000
+
+}
+
+; Remove tooltip
+removeTooltip(){
+ ToolTip, , , ,
 }
 ;
 ; This function creates a new virtual desktop and switches to it
@@ -134,4 +149,3 @@ deleteVirtualDesktop()
 SetKeyDelay, 50
 mapDesktopsFromRegistry()
 OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
-
