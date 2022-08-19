@@ -1,2 +1,2 @@
 # Autohotkey-Scripts
-A collection of autohotkey scripts to make windows a more bareable OS to live in.
+A collection of autohotkey scripts to improve my workflow in Windows.
